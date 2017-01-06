@@ -1,22 +1,5 @@
-import numpy as np
+from pix_mask_utils import *
 
-a = np.array([[[1,2,2],[2,3,3]],[[1,2,3],[1,2,2]],[[2,2,2],[2,3,3]],[[1,2,3],[1,2,2]]])
+test =extract_pixel_vals(["reference_images/bristol_reference_1.png","reference_images/bristol_reference_2.png"])
 
-print(np.unique(a))
-
-cases = []
-
-for k in range(64):
-
-	for i in range(a.shape[0]):
-		for j in range(a.shape[1]):
-			cases.append(tuple(a[i,j,:]))
-			
-print(set(cases))
-
-for l in range(20000):
-
-	if tuple(np.array([1,2,3])) in set(cases):
-		print("WOOO")
-	else:
-		print("No...")
+pixel_value_mask("bristol_tree.png","bristol_tree_output.png",test)
