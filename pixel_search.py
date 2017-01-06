@@ -10,8 +10,8 @@ from PIL import Image
 # Read in image to numpy array
 #
 image = misc.imread("bristol_tree_1.jpg")
-imageR1 = misc.imread("bristol_reference_1.png")
-imageR2 = misc.imread("bristol_reference_1.png")
+imageR1 = misc.imread("reference_images/bristol_reference_1.png")
+imageR2 = misc.imread("reference_images/bristol_reference_2.png")
 imageR = []
 #
 # Render image
