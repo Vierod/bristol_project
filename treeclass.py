@@ -43,7 +43,7 @@ class tree_classifier(object):
     def __init__(self, im_location, ref_locations, iterations = 5, threshold = 0.1, verbose = True):
         
         # Load image and reference images
-        self.im2class = io.imread(image_location)
+        self.im2class = io.imread(im_location)
         self.ref_images = [io.imread(l) for l in ref_locations]
         
         # Apply quickshift image segmentation algorithm
