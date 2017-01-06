@@ -1,8 +1,8 @@
 # bristol_project
 Final Day Project at Bristol Intermediate Software Carpentry Course
 
-###
-Order of processes:
+##Order of processes:
+s
 1. Create 1st referencing set from manually collected reference images (e.g. bristol_reference_1.png)
 2. Create segment dictionary of original image
 3. Search segment dictionary with pixel values from 1st reference set
