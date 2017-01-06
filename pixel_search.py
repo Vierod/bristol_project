@@ -4,13 +4,11 @@
 # reference images are kept. All other pixels are changed to black.
 #
 from scipy import misc
-import matplotlib.pyplot as plt
-import glob
 import numpy as np
 #
 # Read in image to numpy array
 #
-image = misc.imread("1.png")
+image = misc.imread("bristol_tree.png")
 imageR1 = misc.imread("reference_images/bristol_reference_1.png")
 imageR2 = misc.imread("reference_images/bristol_reference_2.png")
 imageR = []
@@ -33,7 +31,7 @@ test = set(imageR)
 # Search through image for test pixels and put them into new_image
 for x in range(image.shape[0]):
     for y in range(image.shape[1]):
-        if tuple(image[x,y,:]) in imageR:
+        if tuple(image[x,y,:]) in test:
             new_image[x,y,:] = image[x,y,:]
         else:
             new_image[x,y,:] = [255., 255., 255.]
