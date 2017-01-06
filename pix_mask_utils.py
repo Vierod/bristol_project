@@ -1,4 +1,4 @@
-def pixel_value_mask(image, out_file, pix_vals, mono=False):
+def pixel_value_mask(image, out_file, pix_vals, mono=False, blk_inc=True):
     """
     A function that masks an image keeping only pixels with specified RGB values
     
@@ -21,21 +21,32 @@ def pixel_value_mask(image, out_file, pix_vals, mono=False):
     import numpy as np
     
     im = misc.imread(image)
-
+    
     new_img = np.full(im.shape,255.)
     
-    for x in range(im.shape[0]):
-        for y in range(im.shape[1]):
-            if tuple(im[x,y,:]) in pix_vals:
-                new_img[x,y,:] = im[x,y,:]
-            else:
-                pass
+    if blk_inc == True:    
+        for x in range(im.shape[0]):
+            for y in range(im.shape[1]):
+                if tuple(im[x,y,:]) in pix_vals:
+                    new_img[x,y,:] = im[x,y,:]
+                else:
+                   pass
+    else:
+        for x in range(im.shape[0]):
+            for y in range(im.shape[1]):
+                if tuple(im[x,y,:]) == (0., 0., 0.):
+                    pass
+                if tuple(im[x,y,:]) in pix_vals:
+                    new_img[x,y,:] = im[x,y,:]
+                else:
+                   pass
+    
     if mono == False:
         misc.toimage(new_img, cmin=0.0, cmax=255.0).save(out_file)
     else:
         misc.toimage(new_img, cmin=254.5, cmax=255.0).save(out_file)
 		
-def extract_pixel_vals(ref_img_list, blk_inc=False, wht_inc=False):
+def extract_pixel_vals(ref_img_list):
     """
     A function that produces a list of unique pixel values for a set of images
 	   
@@ -56,13 +67,7 @@ def extract_pixel_vals(ref_img_list, blk_inc=False, wht_inc=False):
         for i in range(tmpRef.shape[0]):
             for j in range(tmpRef.shape[1]):
                 imRef.append(tuple(tmpRef[i,j,:]))
-				
-	
     
     test = set(imRef)
-    
-    if not blk_inc:
-        test.remove
-    
     
     return test
