@@ -7,7 +7,6 @@ from scipy import misc
 import matplotlib.pyplot as plt
 import glob
 import numpy as np
-from PIL import Image
 #
 # Read in image to numpy array
 #
